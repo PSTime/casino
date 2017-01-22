@@ -38,6 +38,10 @@ module.exports = {
           'react-hot',
           'babel'
         ]
+      },
+      {
+        test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+        loader : 'file-loader'
       }
     ]
   },
@@ -57,6 +61,7 @@ module.exports = {
     filename: 'index.js'
   },
   entry: [
+    'babel-polyfill',
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
     `./${conf.path.src('index')}`

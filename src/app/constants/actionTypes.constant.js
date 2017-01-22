@@ -1,1 +1,2 @@
 export const GET_TABLES = 'GET_TABLES';
+export const GET_TABLES_SUCCEEDED = 'GET_TABLES_SUCCEEDED';

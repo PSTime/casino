@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
+import OneTable from './OneTable.component';
 
+/*
+list of tables
+ */
 class Tables extends Component {
 
   static get propTypes() {
@@ -9,13 +13,30 @@ class Tables extends Component {
     };
   }
 
-  handleOnGetTables() {
+  componentDidMount() {
     const {getTables} = this.props;
     getTables();
   }
 
   render() {
-    return (<h1>Tables {this.props.tables}<button className="btn" onClick={this.handleOnGetTables}>Button</button></h1>);
+    return (<div className="row column">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Players</th>
+            <th>MaxPlayers</th>
+          </tr>
+        </thead>
+        <tbody>
+        {this.props.tables.map(table => {
+          return (<OneTable table={table} key={table.id}/>);
+        })}
+        </tbody>
+      </table>
+    </div>);
   }
 }
 export default Tables;

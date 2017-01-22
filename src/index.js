@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import {Provider} from 'react-redux';
 import casinoReducer from './app/reducers/';
-import Tables from './app/components/Tables.component';
+import casinoSaga from './app/sagas/sagas';
+import Tables from './app/containers/Tables.container';
 import './index.scss';
 
-const store = createStore(casinoReducer);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  casinoReducer,
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(casinoSaga);
 
 ReactDOM.render(
   <Provider store={store}>
