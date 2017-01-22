@@ -7,7 +7,7 @@ import TABLES_TYPES from '../constants/tablesTypes.constant';
 generate mock data
  */
 const tablesGenerator = () => {
-  const count = random(1, 300);
+  const count = random(100, 300);
   const tables = [];
 
   for (let i = 0; i < count; i++) {
